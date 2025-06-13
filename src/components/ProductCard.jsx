@@ -31,6 +31,8 @@ const ProductCard = ({ product, isFavorite, toggleFavorite }) => {
             >
               {isFavorite ? <FaHeart color="red" /> : <FaRegHeart />}
             </button>
+            </a>
+            <FavoriteToggle productId={product.id} />
           </div>
         </div>
       </div>
