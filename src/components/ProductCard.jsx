@@ -1,6 +1,8 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import { FaHeart, FaRegHeart } from 'react-icons/fa';
 
-const ProductCard = ({ product }) => {
+const ProductCard = ({ product, isFavorite, toggleFavorite }) => {
   return (
     <div className="col-md-4 mb-4">
       <div className="card h-100">
@@ -18,11 +20,16 @@ const ProductCard = ({ product }) => {
           </p>
 
           <div className="mt-auto d-flex justify-content-between align-items-center">
-            <a href={`/detalle/${product.id}`} className="btn btn-primary btn-sm">
+            <Link to={`/detalle/${product.id}`} className="btn btn-primary btn-sm">
               Ver más detalles
-            </a>
-            <button className="btn btn-outline-danger btn-sm">
-              🤍
+            </Link>
+
+            <button
+              className="btn btn-outline-danger btn-sm"
+              onClick={() => toggleFavorite(product.id)}
+              aria-label={isFavorite ? 'Quitar de favoritos' : 'Agregar a favoritos'}
+            >
+              {isFavorite ? <FaHeart color="red" /> : <FaRegHeart />}
             </button>
           </div>
         </div>
