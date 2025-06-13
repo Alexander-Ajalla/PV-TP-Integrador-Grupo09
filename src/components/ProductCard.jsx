@@ -1,4 +1,5 @@
 import React from 'react';
+import FavoriteToggle from './FavoriteToggle';
 
 const ProductCard = ({ product }) => {
   return (
@@ -21,9 +22,7 @@ const ProductCard = ({ product }) => {
             <a href={`/detalle/${product.id}`} className="btn btn-primary btn-sm">
               Ver más detalles
             </a>
-            <button className="btn btn-outline-danger btn-sm">
-              🤍
-            </button>
+            <FavoriteToggle productId={product.id} />
           </div>
         </div>
       </div>
