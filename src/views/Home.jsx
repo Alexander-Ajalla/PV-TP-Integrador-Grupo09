@@ -1,29 +1,52 @@
-import React, { useContext, useEffect } from "react";
-import { ProductContext } from "../context/ProductContext";
-import Navbar from '../components/Navbar';
-import ProductCard from '../components/ProductCard';
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { setProducts } from "../store/productSlice";
+import ProductCard from "../components/ProductCard";
+import Navbar from "../components/Navbar";
 
 const Home = () => {
-  const { products, fetchProducts, favorites, toggleFavorite } =
-    useContext(ProductContext);
+  const dispatch = useDispatch();
+  const products = useSelector((state) => state.products.products);
 
   useEffect(() => {
+    // Obtener productos desde la API al cargar el componente
+    const fetchProducts = async () => {
+      try {
+        const response = await fetch("https://fakestoreapi.com/products");
+        const data = await response.json();
+        dispatch(setProducts(data));
+      } catch (error) {
+        console.error("Error al obtener productos:", error);
+      }
+    };
+
     fetchProducts();
-  }, []);
+  }, [dispatch]);
 
   return (
     <div>
       <Navbar />
-      <div className="container mt-4">
+
+      {/* Bienvenida + Logo */}
+      <div className="container mt-5 pt-4">
+        <div className="d-flex justify-content-between align-items-center mb-4">
+          <div>
+            <h2 className="fw-bold">¡Bienvenido a Mi Tienda de Tecnología!</h2>
+            <p className="text-muted">
+              Descubrí nuestros productos destacados para armar tu PC ideal.
+            </p>
+          </div>
+          <img
+            src="/logo.png"
+            alt="Logo Tienda"
+            style={{ height: "80px", objectFit: "contain" }}
+          />
+        </div>
+
+        {/* Listado de productos */}
         <div className="row">
           {products.map((product) => (
-            <div className="col-md-4 mb-4" key={product.id}>
-              <ProductCard
-                product={product}
-                isFavorite={favorites.includes(product.id)}
-                toggleFavorite={toggleFavorite}
-              />
-            </div>
+            <ProductCard key={product.id} product={product} />
           ))}
         </div>
       </div>
