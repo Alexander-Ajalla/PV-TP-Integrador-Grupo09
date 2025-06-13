@@ -1,0 +1,50 @@
+/* Navbar.css */
+
+.navbar {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  position: sticky;
+  top: 0;
+  z-index: 1030; /* para que esté arriba */
+}
+
+.navbar-brand {
+  letter-spacing: 2px;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.navbar-brand:hover {
+  transform: scale(1.1);
+}
+
+.nav-link {
+  font-size: 1.1rem;
+  transition: color 0.3s ease;
+  position: relative;
+  cursor: pointer;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #fff;
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
+}
+
+.nav-link:hover {
+  color: #ffe066;
+}
+
+.nav-link.active {
+  color: #ffd43b;
+}
