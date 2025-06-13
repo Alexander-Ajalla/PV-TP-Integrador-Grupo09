@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-//import ProductCard from "../components/ProductCard";
+import ProductCard from "../components/ProductCard";
 
 export const FavoritesPage = () => {
   const favorites = useSelector((state) => state.products.favorites);
@@ -14,9 +14,9 @@ export const FavoritesPage = () => {
           </div>
         ) : (
           <div>
-            {/**{favorites.map((product) => (
+            {favorites.map((product) => (
               <ProductCard key={product.id} product={product} />
-            ))} */}
+            ))}
           </div>
         )}
       </div>
