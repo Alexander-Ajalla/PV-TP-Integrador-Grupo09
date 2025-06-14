@@ -1,17 +1,17 @@
-import React from 'react';
-import FavoriteToggle from './FavoriteToggle';
-import { Link } from 'react-router-dom'; 
-import "../css/ProductCard.css"; 
+import React from "react";
+import FavoriteToggle from "./FavoriteToggle";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../store/cartSlice";
+import { Link } from "react-router-dom";
+import "../css/ProductCard.css";
 
 const ProductCard = ({ product }) => {
+  const dispatch = useDispatch();
+
   return (
     <div className="card h-100 product-card">
       <div className="product-card-img-container">
-        <img
-          src={product.image}
-          alt={product.title}
-          className="img-fluid"
-        />
+        <img src={product.image} alt={product.title} className="img-fluid" />
       </div>
       <div className="product-card-body">
         <h5 className="product-card-title">{product.title}</h5>
@@ -32,6 +32,9 @@ const ProductCard = ({ product }) => {
           >
             Editar
           </Link>
+          <button onClick={() => dispatch(addToCart(product))}>
+            Añadir al Carrito 🛒
+          </button>
         </div>
       </div>
     </div>
