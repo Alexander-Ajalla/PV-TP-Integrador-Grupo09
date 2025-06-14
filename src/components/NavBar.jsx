@@ -19,7 +19,7 @@ const Navbar = () => {
               <Link className="nav-link" to="/favoritos">Favoritos</Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/crear">Crear Producto</Link>
+              <Link className="nav-link" to="/productos/nuevo">Crear Producto</Link>
             </li>
           </ul>
         </div>

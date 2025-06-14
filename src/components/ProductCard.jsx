@@ -1,5 +1,6 @@
 import React from 'react';
 import FavoriteToggle from './FavoriteToggle';
+import { Link } from 'react-router-dom'; 
 
 const ProductCard = ({ product }) => {
   return (
@@ -19,10 +20,11 @@ const ProductCard = ({ product }) => {
           </p>
 
           <div className="mt-auto d-flex justify-content-between align-items-center">
-            <a href={`/detalle/${product.id}`} className="btn btn-primary btn-sm">
+            <Link to={`/productos/${product.id}`} className="btn btn-primary btn-sm">
               Ver más detalles
-            </a>
+            </Link>
             <FavoriteToggle productId={product.id} />
+            <Link to={`/productos/${product.id}/editar`} className="btn btn-warning btn-sm">Editar</Link> 
           </div>
         </div>
       </div>
