@@ -32,7 +32,10 @@ const ProductCard = ({ product }) => {
           >
             Editar
           </Link>
-          <button onClick={() => dispatch(addToCart(product))}>
+          <button
+            className="btn btn-success w-100"
+            onClick={() => dispatch(addToCart(product))}
+          >
             Añadir al Carrito 🛒
           </button>
         </div>

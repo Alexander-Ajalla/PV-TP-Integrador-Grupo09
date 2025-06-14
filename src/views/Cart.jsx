@@ -11,20 +11,25 @@ const Cart = () => {
 
   return (
     <>
-      <div>
+      <div className="container">
         <h2>Carrito de Compras</h2>
         {cartItems.length === 0 ? (
-          <p>No hay productos en el carrito.</p>
+          <div className="alert alert-info text-center">
+            <p>No hay productos en el carrito.</p>
+          </div>
         ) : (
           <>
-            <ul>
+            <ul className="list-group mb-2">
               {cartItems.map((item) => (
-                <li key={item.id}>
+                <li
+                  key={item.id}
+                  className="list-group-item py-1 px-2 d-flex justify-content-between align-items-center"
+                >
                   <div>
                     <strong>{item.title}</strong> — {item.quantity} x{" "}
                     {item.price} USD = {(item.quantity * item.price).toFixed(2)}{" "}
                     USD
-                    <div>
+                    <div className="product-card-img-container">
                       <img
                         src={item.image}
                         alt={item.title}
@@ -32,14 +37,20 @@ const Cart = () => {
                       />
                     </div>
                   </div>
-                  <button onClick={() => dispatch(removeFromCart(item.id))}>
+                  <button
+                    className="btn btn-sm btn-danger"
+                    onClick={() => dispatch(removeFromCart(item.id))}
+                  >
                     Quitar
                   </button>
                 </li>
               ))}
             </ul>
             <h4>Total: {total.toFixed(2)} USD</h4>
-            <button onClick={() => dispatch(clearCart())}>
+            <button
+              className="btn btn-danger me-2"
+              onClick={() => dispatch(clearCart())}
+            >
               Vaciar Carrito
             </button>
           </>
