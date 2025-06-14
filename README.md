@@ -60,8 +60,10 @@ Los datos se obtienen al inicio y se almacenan en el estado global para su gesti
 
 Para instalar las dependencias necesarias, ejecutar:
 
+```bash
 npm install bootstrap
 npm install bootstrap-icons
 npm install react-router-dom
+
 # Si usás Redux:
 npm install @reduxjs/toolkit react-redux
