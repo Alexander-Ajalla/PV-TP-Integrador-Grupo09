@@ -4,6 +4,10 @@ import { removeFromCart, clearCart } from "../store/cartSlice";
 const Cart = () => {
   const dispatch = useDispatch();
   const cartItems = useSelector((state) => state.cart.items);
+  const total = cartItems.reduce(
+    (acc, item) => acc + item.quantity * item.price,
+    0
+  );
 
   return (
     <>
@@ -18,7 +22,15 @@ const Cart = () => {
                 <li key={item.id}>
                   <div>
                     <strong>{item.title}</strong> — {item.quantity} x{" "}
-                    {item.price} USD
+                    {item.price} USD = {(item.quantity * item.price).toFixed(2)}{" "}
+                    USD
+                    <div>
+                      <img
+                        src={item.image}
+                        alt={item.title}
+                        className="img-fluid"
+                      />
+                    </div>
                   </div>
                   <button onClick={() => dispatch(removeFromCart(item.id))}>
                     Quitar
@@ -26,6 +38,7 @@ const Cart = () => {
                 </li>
               ))}
             </ul>
+            <h4>Total: {total.toFixed(2)} USD</h4>
             <button onClick={() => dispatch(clearCart())}>
               Vaciar Carrito
             </button>

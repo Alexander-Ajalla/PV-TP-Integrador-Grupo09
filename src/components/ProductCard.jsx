@@ -15,7 +15,7 @@ const ProductCard = ({ product }) => {
       </div>
       <div className="product-card-body">
         <h5 className="product-card-title">{product.title}</h5>
-        <p className="product-card-price">${product.price}</p>
+        <p className="product-card-price">{product.price} USD</p>
         <p className="product-card-category">{product.category}</p>
 
         <div className="product-card-footer">
