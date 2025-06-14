@@ -1,12 +1,10 @@
 import React from "react";
-import { useSelector } from "react-redux"; // Solo necesitamos useSelector, no useDispatch para la carga aquí
+import { useSelector } from "react-redux";
 import ProductCard from "../components/ProductCard";
 
 const Home = () => {
-  // Obtenemos los productos, y también los estados de carga y error del slice
   const { products, loading, error } = useSelector((state) => state.products);
 
-  // Muestra un estado de carga mientras los productos se obtienen
   if (loading) {
     return (
       <div className="text-center mt-5">
@@ -18,7 +16,6 @@ const Home = () => {
     );
   }
 
-  // Muestra un mensaje de error si la carga falló
   if (error) {
     return (
       <div className="alert alert-danger text-center mt-5" role="alert">
@@ -27,7 +24,6 @@ const Home = () => {
     );
   }
 
-  // Opcional: Mostrar un mensaje si no hay productos después de la carga
   if (!products || products.length === 0) {
     return (
       <div className="text-center mt-5">
@@ -38,7 +34,6 @@ const Home = () => {
 
   return (
     <div>
-      {/* Bienvenida + Logo */}
       <div className="container mt-5 pt-4">
         <div className="d-flex justify-content-between align-items-center mb-4">
           <div>
@@ -54,11 +49,12 @@ const Home = () => {
           />
         </div>
 
-        {/* Listado de productos */}
-        <div className="row">
+        {/* Aquí el grid con Bootstrap responsive y espacio entre cards */}
+        <div className="row row-cols-1 row-cols-md-3 g-4">
           {products.map((product) => (
-            // Es vital que el product.id sea único para la key
-            <ProductCard key={product.id} product={product} />
+            <div key={product.id} className="col d-flex">
+              <ProductCard product={product} />
+            </div>
           ))}
         </div>
       </div>

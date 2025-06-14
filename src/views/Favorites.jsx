@@ -1,7 +1,6 @@
 import { useSelector } from "react-redux";
 import ProductCard from "../components/ProductCard";
-import Navbar from "../components/Navbar";
-
+import Navbar from "../components/NavBar"; 
 const Favorites = () => {
   const favorites = useSelector((state) => state.products.favorites);
   const products = useSelector((state) => state.products.products);
@@ -11,7 +10,6 @@ const Favorites = () => {
 
   return (
     <>
-      <Navbar /> {/* Agregamos el Navbar arriba */}
       <div className="container mt-4">
         <h1 className="mb-4"> Mis Favoritos</h1>
 
