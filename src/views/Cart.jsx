@@ -27,7 +27,7 @@ const Cart = () => {
                   className="list-group-item d-flex justify-content-between align-items-center"
                 >
                   <div>
-                    <span class="badge bg-primary rounded-pill">
+                    <span className="badge bg-primary rounded-pill">
                       Cantidad: {item.quantity}
                     </span>
                     <p>
@@ -56,7 +56,7 @@ const Cart = () => {
                       className="btn btn-sm btn-danger"
                       onClick={() => dispatch(removeFromCart(item.id))}
                     >
-                      <i class="bi bi-x-circle-fill"> Quitar</i>
+                      <i className="bi bi-x-circle-fill"> Quitar</i>
                     </button>
                   </div>
                 </li>
@@ -67,7 +67,7 @@ const Cart = () => {
               className="btn btn-danger me-2"
               onClick={() => dispatch(clearCart())}
             >
-              <i class="bi bi-trash3-fill"> Vaciar Carrito</i>
+              <i className="bi bi-trash3-fill"> Vaciar Carrito</i>
             </button>
           </>
         )}
