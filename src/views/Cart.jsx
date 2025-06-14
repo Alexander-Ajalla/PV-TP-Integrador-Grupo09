@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { removeFromCart, clearCart } from "../store/cartSlice";
+import { Link } from "react-router-dom";
 
 const Cart = () => {
   const dispatch = useDispatch();
@@ -19,16 +20,23 @@ const Cart = () => {
           </div>
         ) : (
           <>
-            <ul className="list-group mb-2">
+            <ul className="list-group">
               {cartItems.map((item) => (
                 <li
                   key={item.id}
-                  className="list-group-item py-1 px-2 d-flex justify-content-between align-items-center"
+                  className="list-group-item d-flex justify-content-between align-items-center"
                 >
                   <div>
-                    <strong>{item.title}</strong> — {item.quantity} x{" "}
-                    {item.price} USD = {(item.quantity * item.price).toFixed(2)}{" "}
-                    USD
+                    <span class="badge bg-primary rounded-pill">
+                      Cantidad: {item.quantity}
+                    </span>
+                    <p>
+                      <strong>{item.title}</strong>
+                    </p>
+                    <p>
+                      {item.quantity} x {item.price} USD ={" "}
+                      {(item.quantity * item.price).toFixed(2)} USD
+                    </p>
                     <div className="product-card-img-container">
                       <img
                         src={item.image}
@@ -37,12 +45,20 @@ const Cart = () => {
                       />
                     </div>
                   </div>
-                  <button
-                    className="btn btn-sm btn-danger"
-                    onClick={() => dispatch(removeFromCart(item.id))}
-                  >
-                    Quitar
-                  </button>
+                  <div>
+                    <Link
+                      to={`/productos/${item.id}`}
+                      className="btn btn-outline-primary btn-sm"
+                    >
+                      Ver más detalles
+                    </Link>
+                    <button
+                      className="btn btn-sm btn-danger"
+                      onClick={() => dispatch(removeFromCart(item.id))}
+                    >
+                      <i class="bi bi-x-circle-fill"> Quitar</i>
+                    </button>
+                  </div>
                 </li>
               ))}
             </ul>
@@ -51,7 +67,7 @@ const Cart = () => {
               className="btn btn-danger me-2"
               onClick={() => dispatch(clearCart())}
             >
-              Vaciar Carrito
+              <i class="bi bi-trash3-fill"> Vaciar Carrito</i>
             </button>
           </>
         )}
