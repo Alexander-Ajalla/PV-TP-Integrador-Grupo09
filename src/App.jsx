@@ -28,7 +28,7 @@ function AppWrapper() {
           <Route path="/" element={<Home />} />
           <Route path="/favoritos" element={<Favorites />} />
           <Route path="/productos/:id" element={<ProductDetails />} />
-          <Route path="/productos/nuevo" element={<ProductForm />} />
+          <Route path="/crear" element={<ProductForm />} />
           <Route path="/productos/:id/editar" element={<ProductForm />} />
           {/*<Route path="/acerca" element={<About />} />*/}
         </Routes>

@@ -8,7 +8,7 @@ const Navbar = () => {
     <nav className="navbar navbar-expand-lg custom-navbar px-4">
       <NavLink className="navbar-brand d-flex align-items-center" to="/">
         <FaLaptopCode className="me-2 logo-icon" />
-        <span className="orbitron-font">JUANCA TECNO STORE</span>
+        <span className="orbitron-font">TecnoStore</span>
       </NavLink>
       <button
         className="navbar-toggler"
