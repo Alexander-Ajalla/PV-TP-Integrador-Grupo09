@@ -41,7 +41,7 @@ function ProductForm() {
     if (isEditing) {
       // Si estamos editando, buscamos el producto en nuestra lista de productos del store de Redux.
       // Usamos `==` para comparar `id` (que es string) con `product.id` (que puede ser number) de forma flexible.
-      const productToEdit = products.find((p) => p.id == id);
+     const productToEdit = products.find(p => p.id == id); 
       if (productToEdit) {
         // Si el producto se encuentra, precargamos el estado del formulario con sus datos.
         setFormData({
