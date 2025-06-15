@@ -5,7 +5,7 @@ import { FaLaptopCode } from "react-icons/fa";
 import "../css/NavBar.css";
 
 const Navbar = () => {
-  const cartCount = useSelector((state) => state.cart.items.length);
+  const totalUnits = useSelector((state) => state.cart.totalUnits);
 
   return (
     <nav className="navbar navbar-expand-lg custom-navbar px-4">
@@ -59,12 +59,12 @@ const Navbar = () => {
           </li>
           <li className="nav-item">
             <NavLink
+              to="/carrito"
               className={({ isActive }) =>
                 `nav-link custom-navlink ${isActive ? "active" : ""}`
               }
-              to="/carrito"
             >
-              Carrito ({cartCount})
+              Carrito 🛒 ({totalUnits})
             </NavLink>
           </li>
         </ul>
