@@ -10,6 +10,7 @@ import ProductDetails from "./views/ProductDetails.jsx";
 import ProductForm from "./views/ProductForm.jsx";
 import { fetchProducts } from "./store/productSlice";
 import Cart from "./views/Cart.jsx";
+import { Toaster } from "react-hot-toast";
 
 // Este componente "wrapper" se encargará de la carga inicial de datos y las rutas
 function AppWrapper() {
@@ -44,6 +45,7 @@ function App() {
   return (
     // El Provider debe envolver todo lo que necesite acceso al store de Redux
     <Provider store={store}>
+      <Toaster position="top-right" />
       <AppWrapper />
     </Provider>
   );
