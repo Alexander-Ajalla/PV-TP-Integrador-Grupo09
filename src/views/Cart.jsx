@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { removeFromCart, clearCart } from "../store/cartSlice";
 import ProductCard from "../components/ProductCard";
+import toast from "react-hot-toast";
 
 const Cart = () => {
   const dispatch = useDispatch();
@@ -35,7 +36,10 @@ const Cart = () => {
                     showAddToCart={true}
                     showRemove={true}
                     showTotal={true}
-                    onRemove={() => dispatch(removeFromCart(item.id))}
+                    onRemove={() => {
+                      dispatch(removeFromCart(item.id));
+                      toast.error(`${item.title} eliminado del carrito`);
+                    }}
                   />
                 </li>
               ))}
@@ -52,7 +56,10 @@ const Cart = () => {
                 </h4>
                 <button
                   className="btn btn-danger w-100"
-                  onClick={() => dispatch(clearCart())}
+                  onClick={() => {
+                    dispatch(clearCart());
+                    toast(`Carrito vaciado`, { icon: "🗑️" });
+                  }}
                 >
                   <i className="bi bi-trash3-fill"></i> Vaciar Carrito
                 </button>
