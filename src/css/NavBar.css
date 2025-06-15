@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap');
+
+.orbitron-font {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.6rem;
+  font-weight: 600;
+  background: linear-gradient(to right, #00e0ff, #00ff9d);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.logo-icon {
+  font-size: 1.8rem;
+  color: #00e0ff;
+}
+
+.custom-navbar {
+  background: #000000; /* Fondo sólido negro */
+  border-bottom: 3px solid #00ff9d;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+}
+
+.navbar-nav .nav-link {
+  font-weight: 500;
+  margin-left: 1rem;
+  transition: all 0.3s;
+  position: relative;
+}
+
+.custom-navlink {
+  color: #ffffff !important;
+}
+
+/* Subrayado degradado al pasar el mouse */
+.custom-navlink::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background: linear-gradient(to right, #00e0ff, #00ff9d);
+  transition: width 0.3s ease-in-out;
+}
+
+.custom-navlink:hover::after {
+  width: 100%;
+}
+
+/* Subrayado permanente en el activo */
+.custom-navlink.active::after {
+  width: 100%;
+}

@@ -1,0 +1,28 @@
+/* src/views/ProductForm.css */
+.product-form-container {
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+}
+
+/* Ejemplo: Ajuste para el texto del título si el card-title de Bootstrap no es suficiente */
+
+.product-form-title {
+  color: #333;
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Ejemplo: Estilo personalizado para mensajes de error, si quieres sobreescribir invalid-feedback */
+
+.invalid-feedback {
+  font-size: 0.875em;
+  color: #dc3545;
+  margin-top: 0.25rem;
+}
+
+
+/* Puedes añadir cualquier estilo que consideres necesario aquí */

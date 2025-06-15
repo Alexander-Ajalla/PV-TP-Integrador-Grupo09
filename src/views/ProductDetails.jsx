@@ -1,13 +1,33 @@
-import { useParams, Link } from 'react-router-dom'
-import { useSelector } from 'react-redux'
-import FavoriteToggle from '../components/FavoriteToggle'
+// src/views/ProductDetail.jsx
+import { useParams, Link, useNavigate } from "react-router-dom"; // Asegúrate de importar Link
+import { useSelector, useDispatch } from "react-redux";
+import FavoriteToggle from "../components/FavoriteToggle";
+import { deleteProduct } from "../store/productSlice";
 
 function ProductDetail() {
-    const { id } = useParams();
-    const products = useSelector((state) => state.products.products);
-    const product = products.find((p) => p.id === parseInt(id));
+  const { id } = useParams();
 
-    if (!product) {
+  const navigate = useNavigate(); // Inicializa useNavigate
+  const dispatch = useDispatch(); // Inicializa useDispatch
+
+  const products = useSelector((state) => state.products.products);
+
+  const product = products.find((p) => p.id == id);
+
+  // Función para manejar la eliminación
+  const handleDelete = () => {
+    // Pedir confirmación al usuario
+    if (
+      window.confirm(
+        `¿Estás seguro de que quieres eliminar "${product.title}"?`
+      )
+    ) {
+      dispatch(deleteProduct(product.id)); // Despacha la acción de eliminar con el ID del producto
+      navigate("/"); // Redirige al Home después de eliminar
+    }
+  };
+
+  if (!product) {
     return (
       <div className="container py-5">
         <h1 className="display-4 fw-bold mb-4">Producto no encontrado</h1>
@@ -28,7 +48,7 @@ function ProductDetail() {
             src={product.image}
             alt={product.title}
             className="img-fluid rounded shadow"
-            style={{ maxHeight: '400px', objectFit: 'contain' }}
+            style={{ maxHeight: "400px", objectFit: "contain" }}
           />
         </div>
         <div className="col-md-6">
@@ -38,9 +58,15 @@ function ProductDetail() {
           <h3 className="text-success mb-4">${product.price}</h3>
           <div className="d-flex gap-3">
             <FavoriteToggle productId={product.id} />
-            <Link to={`/products/${product.id}/edit`} className="btn btn-outline-primary">
+            <Link
+              to={`/productos/${product.id}/editar`}
+              className="btn btn-outline-primary"
+            >
               <i className="bi bi-pencil me-2"></i>Editar Producto
             </Link>
+            <button onClick={handleDelete} className="btn btn-danger">
+              <i className="bi bi-trash me-2"></i>Eliminar Producto
+            </button>
           </div>
         </div>
       </div>
