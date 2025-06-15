@@ -1,9 +1,12 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
-import { FaLaptopCode } from 'react-icons/fa';
-import '../css/NavBar.css';
+import React from "react";
+import { NavLink } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { FaLaptopCode } from "react-icons/fa";
+import "../css/NavBar.css";
 
 const Navbar = () => {
+  const totalUnits = useSelector((state) => state.cart.totalUnits);
+
   return (
     <nav className="navbar navbar-expand-lg custom-navbar px-4">
       <NavLink className="navbar-brand d-flex align-items-center" to="/">
@@ -26,7 +29,9 @@ const Navbar = () => {
         <ul className="navbar-nav ms-auto">
           <li className="nav-item">
             <NavLink
-              className={({ isActive }) => `nav-link custom-navlink ${isActive ? 'active' : ''}`}
+              className={({ isActive }) =>
+                `nav-link custom-navlink ${isActive ? "active" : ""}`
+              }
               to="/"
             >
               Inicio
@@ -34,7 +39,9 @@ const Navbar = () => {
           </li>
           <li className="nav-item">
             <NavLink
-              className={({ isActive }) => `nav-link custom-navlink ${isActive ? 'active' : ''}`}
+              className={({ isActive }) =>
+                `nav-link custom-navlink ${isActive ? "active" : ""}`
+              }
               to="/favoritos"
             >
               Favoritos
@@ -42,10 +49,22 @@ const Navbar = () => {
           </li>
           <li className="nav-item">
             <NavLink
-              className={({ isActive }) => `nav-link custom-navlink ${isActive ? 'active' : ''}`}
+              className={({ isActive }) =>
+                `nav-link custom-navlink ${isActive ? "active" : ""}`
+              }
               to="/crear"
             >
               Crear Producto
+            </NavLink>
+          </li>
+          <li className="nav-item">
+            <NavLink
+              to="/carrito"
+              className={({ isActive }) =>
+                `nav-link custom-navlink ${isActive ? "active" : ""}`
+              }
+            >
+              Carrito 🛒 ({totalUnits})
             </NavLink>
           </li>
         </ul>
@@ -55,4 +74,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-

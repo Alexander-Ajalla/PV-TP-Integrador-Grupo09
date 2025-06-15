@@ -1,14 +1,16 @@
 // src/App.jsx
-import React, { useEffect } from 'react';
-import { Routes, Route } from 'react-router-dom'; 
-import { Provider, useDispatch } from 'react-redux';
-import { store } from './store/store';
-import NavBar from './components/NavBar.jsx';
+import React, { useEffect } from "react";
+import { Routes, Route } from "react-router-dom";
+import { Provider, useDispatch } from "react-redux";
+import { store } from "./store/store";
+import NavBar from "./components/NavBar.jsx";
 import Home from "./views/Home.jsx";
 import Favorites from "./views/Favorites.jsx";
-import ProductDetails from './views/ProductDetails.jsx';
+import ProductDetails from "./views/ProductDetails.jsx";
 import ProductForm from "./views/ProductForm.jsx";
-import { fetchProducts } from './store/productSlice';
+import { fetchProducts } from "./store/productSlice";
+import Cart from "./views/Cart.jsx";
+import { Toaster } from "react-hot-toast";
 
 // Este componente "wrapper" se encargará de la carga inicial de datos y las rutas
 function AppWrapper() {
@@ -30,6 +32,7 @@ function AppWrapper() {
           <Route path="/productos/:id" element={<ProductDetails />} />
           <Route path="/crear" element={<ProductForm />} />
           <Route path="/productos/:id/editar" element={<ProductForm />} />
+          <Route path="/carrito" element={<Cart />} />
           {/*<Route path="/acerca" element={<About />} />*/}
         </Routes>
       </main>
@@ -42,6 +45,7 @@ function App() {
   return (
     // El Provider debe envolver todo lo que necesite acceso al store de Redux
     <Provider store={store}>
+      <Toaster position="top-right" />
       <AppWrapper />
     </Provider>
   );
