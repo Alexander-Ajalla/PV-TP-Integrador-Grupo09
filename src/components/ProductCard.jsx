@@ -3,6 +3,7 @@ import FavoriteToggle from "./FavoriteToggle";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../store/cartSlice";
 import { Link } from "react-router-dom";
+import toast from "react-hot-toast";
 import "../css/ProductCard.css";
 
 const ProductCard = ({
@@ -20,6 +21,7 @@ const ProductCard = ({
 
   const handleAddToCart = () => {
     dispatch(addToCart({ ...product, quantity: Number(quantity) }));
+    toast.success(`¡${product.title} añadido al carrito!`);
   };
 
   return (
