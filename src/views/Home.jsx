@@ -33,32 +33,37 @@ const Home = () => {
   }
 
   return (
-    <div>
-      <div className="container mt-5 pt-4">
-        <div className="d-flex justify-content-between align-items-center mb-4">
-          <div>
-            <h2 className="fw-bold">¡Bienvenido a Mi Tienda de Tecnología!</h2>
-            <p className="text-muted">
-              Descubrí nuestros productos destacados para armar tu PC ideal.
-            </p>
-          </div>
+    <>
+      <div className="container pt-3">
+        {/* Cartel de bienvenida centrado */}
+        <div className="d-flex flex-column align-items-center text-center p-4 mb-5">
           <img
-            src="/logo.png"
+            src="src/assets/logo.png"
             alt="Logo Tienda"
-            style={{ height: "80px", objectFit: "contain" }}
+            style={{
+              height: "160px",
+              width: "auto",
+              objectFit: "contain",
+            }}
           />
+          <h2 className="fw-bold mb-2">¡Bienvenido a TecnoStore!</h2>
+          <p className="text-muted mb-0">
+            Todo lo que necesitás en un mismo lugar
+          </p>
         </div>
 
-        {/* Aquí el grid con Bootstrap responsive y espacio entre cards */}
-        <div className="row row-cols-1 row-cols-md-3 g-4">
+        {/* Grilla de productos */}
+        <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
           {products.map((product) => (
-            <div key={product.id} className="col d-flex">
-              <ProductCard product={product} />
+            <div key={product.id} className="col">
+              <div className="card h-100 shadow-sm border-0 hover-shadow">
+                <ProductCard product={product} />
+              </div>
             </div>
           ))}
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
