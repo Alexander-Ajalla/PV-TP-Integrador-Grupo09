@@ -1,4 +1,6 @@
-# 🛒 Trabajo Integrador - Sistema de Gestión de Productos en React (Grupo 9)
+<img src="./src/assets/logo-fi-unju-gran-formato-horizontal-3000x683.png" alt="logo fi">
+
+# 🛒 Trabajo Integrador - Sistema de Gestión de Productos en React (Grupo 9) <img src="https://www.svgrepo.com/show/303157/react-logo.svg" alt="React Logo" width="50" height="60" style="vertical-align: middle, object-fit:contain;">
 
 ---
 
@@ -46,24 +48,22 @@ Los datos se obtienen al inicio y se almacenan en el estado global para su gesti
 
 ---
 
-## 👥 Integrantes del Grupo 9
+## Integrantes 👥
 
-- Alexander Natanael Ajalla  
-- Barrientos Lautaro Nicolás  
-- Ivo Thaiel Vicencio Rosas  
-- Álvarez Carlos Matías  
-- Sánchez Ariel Maximiliano  
+- Alexander Natanael Ajalla ➡ [Alexander-Ajalla](https://github.com/Alexander-Ajalla)
+- Barrientos Lautaro Nicolás ➡ [Lautaro Barrientos](https://github.com/BarrientosLautaro)
+- Ivo Thaiel Vicencio Rosas ➡ [IvoThaielVicencioRosas](https://github.com/ivothaiel)
+- Álvarez Carlos Matías ➡ [AlvarezCarlosMatias](https://github.com/MintBlue06)
+- Sánchez Ariel Maximiliano ➡ [MaxiSanchez27](https://github.com/MaxiSanchez27) 
 
 ---
 
-## 📦 Dependencias
+#### Dependencias a instalar 📦
 
-Para instalar las dependencias necesarias, ejecutar:
+`$ npm install bootstrap bootstrap-icons`
 
-```bash
-npm install bootstrap
-npm install bootstrap-icons
-npm install react-router-dom
+`$ npm install react-router-dom`
 
-# Si usás Redux:
-npm install @reduxjs/toolkit react-redux
+`$ npm install @reduxjs/toolkit react-redux`
+
+`$ npm install react-hot-toast`
