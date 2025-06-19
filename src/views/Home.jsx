@@ -1,9 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import ProductCard from "../components/ProductCard";
-
+import "../css/home.css";
 const Home = () => {
   const { products, loading, error } = useSelector((state) => state.products);
+  // Estado para la categoría seleccionada
+  const [selectedCategory, setSelectedCategory] = useState("");
+
+  // Obtener categorías únicas
+  const categories = Array.from(new Set(products.map((p) => p.category)));
+
+  // Filtrar productos según la categoría seleccionada
+  const filteredProducts = selectedCategory
+    ? products.filter((p) => p.category === selectedCategory)
+    : products;
 
   if (loading) {
     return (
@@ -52,9 +62,25 @@ const Home = () => {
           </p>
         </div>
 
+        {/* Selector de categoría */}
+        <div className="mb-4 d-flex justify-content-center">
+          <select
+            className="form-select w-auto"
+            value={selectedCategory}
+            onChange={(e) => setSelectedCategory(e.target.value)}
+          >
+            <option value="">Todas las categorías</option>
+            {categories.map((cat) => (
+              <option key={cat} value={cat}>
+                {cat}
+              </option>
+            ))}
+          </select>
+        </div>
+
         {/* Grilla de productos */}
         <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
-          {products.map((product) => (
+          {filteredProducts.map((product) => (
             <div key={product.id} className="col">
               <div className="card h-100 shadow-sm border-0 hover-shadow">
                 <ProductCard product={product} />

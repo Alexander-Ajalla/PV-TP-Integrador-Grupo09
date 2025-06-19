@@ -1,0 +1,41 @@
+/* Estilo profesional y futurista para el selector de categorías */
+.form-select {
+  border-radius: 2rem;
+  border: 2px solid #222831;
+  background: #18191a; /* Negro sólido para mejor contraste */
+  color: #f8f8f8;
+  box-shadow: 0 4px 24px 0 rgba(0,0,0,0.12), 0 1.5px 4px 0 rgba(0,123,255,0.10);
+  padding: 0.6rem 2.8rem 0.6rem 1.2rem;
+  font-size: 1.13rem;
+  font-weight: 500;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s, background 0.3s;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23f8f8f8' class='bi bi-chevron-down' viewBox='0 0 16 16'%3E%3Cpath fill-rule='evenodd' d='M1.646 5.646a.5.5 0 0 1 .708 0L8 11.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1.2rem center;
+  background-size: 1.3rem;
+  box-shadow: 0 0 0 2px rgba(0,123,255,0.08);
+}
+
+.form-select:focus {
+  border-color: #00adb5;
+  box-shadow: 0 0 0 3px #00adb533, 0 4px 24px 0 rgba(0,0,0,0.12);
+  background: linear-gradient(135deg, #232526 0%, #393e46 100%);
+  color: #f8f8f8;
+}
+
+.form-select:hover {
+  border-color: #00adb5;
+  background: #232526;
+  color: #f8f8f8;
+}
+
+/* Contenedor para resaltar el select */
+.select-category-container {
+  background: rgba(34, 40, 49, 0.85);
+  border-radius: 2.5rem;
+  box-shadow: 0 2px 16px 0 rgba(0,173,181,0.10);
+  padding: 1rem 2rem;
+  display: inline-block;
+  margin-bottom: 2rem;
+}
