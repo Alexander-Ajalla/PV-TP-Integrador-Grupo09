@@ -4,6 +4,7 @@ import ProductCard from "../components/ProductCard";
 import "../css/home.css";
 const Home = () => {
   const { products, loading, error } = useSelector((state) => state.products);
+  const user = useSelector((state) => state.auth.user); // usuario autenticado
   // Estado para la categoría seleccionada
   const [selectedCategory, setSelectedCategory] = useState("");
 
@@ -45,7 +46,7 @@ const Home = () => {
   return (
     <>
       <div className="container pt-3">
-        {/* Cartel de bienvenida centrado */}
+        {/* Cartel de bienvenida */}
         <div className="d-flex flex-column align-items-center text-center p-4 mb-5">
           <img
             src="src/assets/logo.png"
@@ -56,7 +57,9 @@ const Home = () => {
               objectFit: "contain",
             }}
           />
-          <h2 className="fw-bold mb-2">¡Bienvenido a TecnoStore!</h2>
+          <h2 className="fw-bold mb-2">
+            {user ? `¡Bienvenido, ${user.name}!` : "¡Bienvenido a TecnoStore!"}
+          </h2>
           <p className="text-muted mb-0">
             Todo lo que necesitás en un mismo lugar
           </p>
