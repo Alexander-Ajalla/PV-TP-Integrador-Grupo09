@@ -14,8 +14,8 @@ import { Toaster } from "react-hot-toast";
 import PrivateRoute from "./components/PrivateRoute";
 import Login from "./views/Login"; // para que ya este listo para el que lo cree
 import Register from "./views/Register"; //esto tambien
-import { useNavigate } from 'react-router-dom';
-import { logout } from '../store/authSlice'; //la ruta tiene que ser asi
+import { useNavigate } from "react-router-dom";
+import { logout } from "../src/store/authSlice.js"; //la ruta tiene que ser asi
 
 // Este componente "wrapper" se encargará de la carga inicial de datos y las rutas
 function AppWrapper() {
@@ -24,6 +24,23 @@ function AppWrapper() {
   // Despacha fetchProducts cuando el componente se monta por primera vez
   useEffect(() => {
     dispatch(fetchProducts());
+    // Rehidratación del usuario desde localStorage
+    const sessionUser = JSON.parse(localStorage.getItem("sessionUser"));
+    if (sessionUser) {
+      dispatch({ type: "auth/login", payload: sessionUser });
+    }
+    // Inicializar usuarios por defecto si no existen
+    const storedUsers = JSON.parse(localStorage.getItem("users"));
+    if (!storedUsers || storedUsers.length === 0) {
+      const defaultUsers = [
+        {
+          name: "admin",
+          email: "admin@gmail.com",
+          password: "123456",
+        },
+      ];
+      localStorage.setItem("users", JSON.stringify(defaultUsers));
+    }
   }, [dispatch]); // La dependencia `dispatch` asegura que se ejecute solo una vez al montar
 
   return (
@@ -63,7 +80,7 @@ function AppWrapper() {
               </PrivateRoute>
             }
           />
-           <Route
+          <Route
             path="/crear"
             element={
               <PrivateRoute>
@@ -79,7 +96,7 @@ function AppWrapper() {
               </PrivateRoute>
             }
           />
-           <Route
+          <Route
             path="/carrito"
             element={
               <PrivateRoute>
