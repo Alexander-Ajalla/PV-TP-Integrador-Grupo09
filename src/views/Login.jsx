@@ -4,6 +4,7 @@ import { toast } from "react-hot-toast";
 import { useDispatch } from "react-redux";
 import { login } from "../store/authSlice";
 import "../css/Login.css";
+import logo from "../assets/logo2.png";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -35,7 +36,7 @@ const Login = () => {
       <div className="login-card">
         <div className="login-header">
           <img
-            src="src/assets/logo.png"
+            src={logo}
             alt="Logo"
             className="login-logo"
           />
