@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
+import "../css/Register.css"; 
 
 const Register = () => {
   const navigate = useNavigate();
@@ -36,11 +37,12 @@ const Register = () => {
     navigate("/login");
   };
 
+
   return (
-    <>
-      <div>
-        <h2>Registro</h2>
-        <form onSubmit={handleSubmit}>
+    <div className="register-bg">
+      <div className="register-card">
+        <h2 className="register-title">Registro</h2>
+        <form className="register-form" onSubmit={handleSubmit}>
           <div>
             <label>Nombre de Usuario</label>
             <input
@@ -77,11 +79,12 @@ const Register = () => {
               required
             />
           </div>
-          <button type="submit">Registrarse</button>
+          <button type="submit" className="btn-register">Registrarse</button>
         </form>
       </div>
-    </>
-  );
+    </div>
+);
+
 };
 
 export default Register;

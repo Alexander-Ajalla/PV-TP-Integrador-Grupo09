@@ -50,7 +50,6 @@ const Login = () => {
               type="email"
               className="form-control"
               value={email}
-              autoFocus
               onChange={(e) => setEmail(e.target.value)}
               required
               autoComplete="username"
