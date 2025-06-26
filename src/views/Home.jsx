@@ -66,7 +66,13 @@ const Home = () => {
         </div>
 
         {/* Selector de categoría */}
-        <div className="mb-4 d-flex justify-content-center">
+         <div className="select-category-container d-flex flex-column align-items-center mb-4">
+          <div className="d-flex align-items-center mb-2">
+            <i className="bi bi-funnel-fill me-2" style={{ color: "#00adb5", fontSize: "1.5rem" }}></i>
+            <span className="fw-bold" style={{ color: "#00adb5", fontSize: "1.2rem" }}>
+              Filtrar por categoría
+            </span>
+          </div>
           <select
             className="form-select w-auto"
             value={selectedCategory}
