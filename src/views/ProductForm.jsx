@@ -147,6 +147,9 @@ function ProductForm() {
     navigate("/");
   };
 
+  // Calcular categorías únicas fuera del JSX
+  const categories = Array.from(new Set(products.map((p) => p.category)));
+
   return (
     <div className="container mt-5">
       <div className="row justify-content-center">
@@ -238,16 +241,21 @@ function ProductForm() {
                   <label htmlFor="category" className="form-label">
                     Categoría:
                   </label>
-                  <input
-                    type="text"
+                  <select
                     id="category"
                     name="category"
                     value={formData.category}
                     onChange={handleChange}
-                    className={`form-control ${
-                      errors.category ? "is-invalid" : ""
-                    }`}
-                  />
+                    className={`form-select ${errors.category ? "is-invalid" : ""}`}
+                    required
+                  >
+                    <option value="">Selecciona una categoría</option>
+                    {categories.map((cat) => (
+                      <option key={cat} value={cat}>
+                        {cat}
+                      </option>
+                    ))}
+                  </select>
                   {errors.category && (
                     <div className="invalid-feedback">{errors.category}</div>
                   )}
