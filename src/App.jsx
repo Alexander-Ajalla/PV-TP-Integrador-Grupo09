@@ -22,6 +22,7 @@ import About from "./views/About.jsx"; // Importa el componente About
 // Este componente "wrapper" se encargará de la carga inicial de datos y las rutas
 function AppWrapper() {
   const dispatch = useDispatch();
+  const { mode } = useSelector((state) => state.theme);
 
   // Despacha fetchProducts cuando el componente se monta por primera vez
   useEffect(() => {
@@ -45,8 +46,12 @@ function AppWrapper() {
     }
   }, [dispatch]); // La dependencia `dispatch` asegura que se ejecute solo una vez al montar
 
+  React.useEffect(() => {
+    document.body.className = `theme-${mode}`;
+  }, [mode]);
+
   return (
-    <div className="d-flex flex-column min-vh-100">
+    <div className={`d-flex flex-column min-vh-100 theme-${mode}`}>
       <NavBar />
       <main className="flex-grow-1 container py-4">
         {/* Routes debe estar dentro de un Router, que ahora estará en main.jsx */}
