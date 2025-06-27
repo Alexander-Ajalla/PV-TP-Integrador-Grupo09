@@ -5,6 +5,7 @@ import { Provider, useDispatch, useSelector } from "react-redux";
 import { store } from "./store/store";
 import NavBar from "./components/NavBar.jsx";
 import Home from "./views/Home.jsx";
+import Footer from "./components/Footer.jsx";
 import Favorites from "./views/Favorites.jsx";
 import ProductDetails from "./views/ProductDetails.jsx";
 import ProductForm from "./views/ProductForm.jsx";
@@ -16,6 +17,7 @@ import Login from "./views/Login"; // para que ya este listo para el que lo cree
 import Register from "./views/Register"; //esto tambien
 import { useNavigate } from "react-router-dom";
 import { logout } from "../src/store/authSlice.js"; //la ruta tiene que ser asi
+import About from "./views/About.jsx"; // Importa el componente About
 
 // Este componente "wrapper" se encargará de la carga inicial de datos y las rutas
 function AppWrapper() {
@@ -104,10 +106,10 @@ function AppWrapper() {
               </PrivateRoute>
             }
           />
-          {/*<Route path="/acerca" element={<About />} />*/}
+          <Route path="/acerca" element={<About />} />
         </Routes>
       </main>
-      {/* <Footer /> */}
+       <Footer />
     </div>
   );
 }

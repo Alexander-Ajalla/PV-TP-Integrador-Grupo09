@@ -8,13 +8,13 @@ import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const totalUnits = useSelector((state) => state.cart.totalUnits);
-  const { isAuthenticated, user } = useSelector(state => state.auth);
+  const { isAuthenticated, user } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+  const navigate = useNavigate();   
 
   const handleLogout = () => {
     dispatch(logout());
-    navigate('/login');
+    navigate("/login");
   };
 
   return (
@@ -85,18 +85,45 @@ const Navbar = () => {
                 </NavLink>
               </li>
               <li className="nav-item">
-                <button className="btn btn-outline-danger btn-sm" onClick={handleLogout}>
+                <button
+                  className="btn btn-outline-danger btn-sm"
+                  onClick={handleLogout}
+                >
                   Cerrar Sesión
                 </button>
+              </li>
+              <li className="nav-item">
+                <NavLink
+                  className={({ isActive }) =>
+                    `nav-link custom-navlink ${isActive ? "active" : ""}`
+                  }
+                  to="/acerca"
+                >
+                  Acerca
+                </NavLink>
               </li>
             </>
           ) : (
             <>
               <li className="nav-item">
-                <NavLink className="nav-link" to="/login">Iniciar Sesión</NavLink>
+                <NavLink className="nav-link" to="/login">
+                  Iniciar Sesión
+                </NavLink>
               </li>
               <li className="nav-item">
-                <NavLink className="nav-link" to="/register">Registrarse</NavLink>
+                <NavLink className="nav-link" to="/register">
+                  Registrarse
+                </NavLink>
+              </li>
+              <li className="nav-item">
+                <NavLink
+                  className={({ isActive }) =>
+                    `nav-link custom-navlink ${isActive ? "active" : ""}`
+                  }
+                  to="/acerca"
+                >
+                  Acerca
+                </NavLink>
               </li>
             </>
           )}
