@@ -1,28 +1,34 @@
 .login-bg {
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: var(--bg-primary);
-    border: 4px solid var(--accent);
-    border-radius: 2.5rem;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--bg-primary);
+  border: 4px solid var(--accent);
+  border-radius: 2.5rem;
 }
 
 .login-card {
-    background: var(--card-bg);
-    color: var(--text-primary);
-    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.2);
-    border-radius: 2.5rem;
-    padding: 2.5rem 2rem 2rem 2rem;
-    max-width: 400px;
-    width: 100%;
-    animation: fadeIn 0.7s;
-    border: 2px solid var(--accent);
+  background: var(--card-bg);
+  color: var(--text-primary);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.2);
+  border-radius: 2.5rem;
+  padding: 2.5rem 2rem 2rem 2rem;
+  max-width: 400px;
+  width: 100%;
+  animation: fadeIn 0.7s;
+  border: 2px solid var(--accent);
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(40px);}
-  to { opacity: 1; transform: translateY(0);}
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .login-header {
@@ -53,12 +59,14 @@
   margin-top: 0.5rem;
   background: linear-gradient(90deg, var(--accent) 0%, var(--accent2) 100%);
   border: none;
-  color: #fff;
+  color: var(
+    --text-primary
+  ); /*se comunica directamente con la variable de index.css*/
   font-weight: bold;
   padding: 0.7rem 0;
   border-radius: 0.5rem;
   transition: background 0.3s;
-  box-shadow: 0 2px 8px rgba(0,173,181,0.08);
+  box-shadow: 0 2px 8px rgba(0, 173, 181, 0.08);
 }
 
 .btn-login:hover {
