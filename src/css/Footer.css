@@ -1,0 +1,40 @@
+/* Footer sincronizado con el navbar */
+.custom-footer {
+  background-color: #000000; /* Mismo fondo que el navbar */
+  color: #ffffff; /* Texto blanco consistente */
+  border-top: 3px solid #00ff9d; /* Misma línea de borde que el navbar */
+  box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.6); /* Sombra superior suave */
+  padding: 1rem 0;
+  text-align: center;
+  font-family: 'Orbitron', sans-serif; /* Tipografía igual que el navbar */
+}
+
+.custom-footer span strong {
+  background: linear-gradient(to right, #00e0ff, #00ff9d);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.custom-footer a {
+  color: #ffffff;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.custom-footer a:hover {
+  color: #00ff9d; /* Hover verde neón para resaltar */
+}
+
+.social-icons a {
+  color: #ffffff;
+  font-size: 1.6rem;
+  margin: 0 0.6rem;
+  transition: color 0.3s, transform 0.3s;
+}
+
+.social-icons a:hover {
+  color: #00e0ff; /* Hover azul neón */
+  transform: scale(1.2); /* Efecto sutil de agrandado */
+}
+
