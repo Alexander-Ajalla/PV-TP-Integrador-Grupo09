@@ -5,6 +5,8 @@ import { FaLaptopCode } from "react-icons/fa";
 import "../css/NavBar.css";
 import { logout } from "../store/authSlice";
 import { useNavigate } from "react-router-dom";
+import ThemeToggle from "./ThemeToggle";
+
 
 const Navbar = () => {
   const totalUnits = useSelector((state) => state.cart.totalUnits);
@@ -36,7 +38,7 @@ const Navbar = () => {
       </button>
 
       <div className="collapse navbar-collapse" id="navbarNav">
-        <ul className="navbar-nav ms-auto align-items-center">
+        <ul className="navbar-nav ms-auto align-items-center gap-3">
           {isAuthenticated ? (
             <>
               <li className="nav-item">
@@ -84,14 +86,7 @@ const Navbar = () => {
                   Carrito 🛒 ({totalUnits})
                 </NavLink>
               </li>
-              <li className="nav-item">
-                <button
-                  className="btn btn-outline-danger btn-sm"
-                  onClick={handleLogout}
-                >
-                  Cerrar Sesión
-                </button>
-              </li>
+              
               <li className="nav-item">
                 <NavLink
                   className={({ isActive }) =>
@@ -102,6 +97,21 @@ const Navbar = () => {
                   Acerca
                 </NavLink>
               </li>
+              <li className="nav-item">
+                <ThemeToggle />
+              </li>
+              <li className="nav-item">
+                <button
+                  className="btn btn-outline-danger btn-sm"
+                  onClick={handleLogout}
+                  title="Cerrar Sesión"
+                  aria-label="Cerrar Sesión"
+                  style={{ display: "flex", alignItems: "center", justifyContent: "center" }}
+                >
+                  <i className="bi bi-box-arrow-right" style={{ fontSize: "1.3rem" }}></i>
+                </button>
+              </li>
+              
             </>
           ) : (
             <>
@@ -124,6 +134,9 @@ const Navbar = () => {
                 >
                   Acerca
                 </NavLink>
+              </li>
+              <li className="nav-item">
+                <ThemeToggle />
               </li>
             </>
           )}
