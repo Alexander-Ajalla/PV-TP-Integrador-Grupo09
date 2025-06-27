@@ -1,28 +1,123 @@
 /* src/views/ProductForm.css */
-.product-form-container {
-  max-width: 600px;
-  margin: 50px auto;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  background-color: #fff;
+.product-form-outer {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
 }
 
-/* Ejemplo: Ajuste para el texto del título si el card-title de Bootstrap no es suficiente */
+.product-form-container {
+  width: 100%;
+  max-width: 540px;
+  background: var(--form-bg, #fff);
+  border-radius: 16px;
+  box-shadow: 0 6px 32px rgba(0,0,0,0.18);
+  padding: 2.5rem 2.5rem 2rem 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
 
 .product-form-title {
-  color: #333;
-  font-size: 2.5rem;
-  margin-bottom: 1.5rem;
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: inherit;
 }
 
-/* Ejemplo: Estilo personalizado para mensajes de error, si quieres sobreescribir invalid-feedback */
+.product-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.product-form-label {
+  font-weight: 500;
+  margin-bottom: 0.1rem;
+}
+
+.product-form-input {
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 0.55rem 0.9rem;
+  font-size: 1rem;
+  background: inherit;
+  color: inherit;
+  transition: border 0.2s;
+}
+.product-form-input:focus {
+  outline: none;
+  border-color: #007bff;
+}
+.product-form-textarea {
+  resize: vertical;
+  min-height: 80px;
+}
 
 .invalid-feedback {
-  font-size: 0.875em;
+  font-size: 0.92em;
   color: #dc3545;
-  margin-top: 0.25rem;
+  margin-top: 0.1rem;
 }
 
+.product-form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.7rem;
+  margin-top: 0.5rem;
+}
+.product-form-btn {
+  padding: 0.5rem 1.3rem;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+.product-form-btn-cancel {
+  background: #888;
+  color: #fff;
+}
+.product-form-btn-cancel:hover {
+  background: #666;
+}
+.product-form-btn-submit {
+  background: #ffc107;
+  color: #222;
+}
+.product-form-btn-submit:hover {
+  background: #e0a800;
+}
+
+/* Modo oscuro y claro */
+.product-form-dark {
+  --form-bg: #232323;
+  color: #fff;
+}
+.product-form-light {
+  --form-bg: #fff;
+  color: #222;
+}
+.product-form-dark .product-form-container {
+  background: var(--form-bg);
+  color: #fff;
+}
+.product-form-light .product-form-container {
+  background: var(--form-bg);
+  color: #222;
+}
+.product-form-dark .product-form-input {
+  background: #232323;
+  color: #fff;
+  border-color: #444;
+}
+.product-form-light .product-form-input {
+  background: #fff;
+  color: #222;
+  border-color: #ccc;
+}
 
 /* Puedes añadir cualquier estilo que consideres necesario aquí */

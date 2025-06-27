@@ -5,27 +5,27 @@
 }
 
 .about h2 {
-  color: #2c3e50;
+  color: var(--about-title) !important;
   margin-bottom: 2rem;
   text-align: center;
 }
 
 .about-content {
-  background-color: white;
+  background: var(--about-bg) !important;
+  color: var(--about-text) !important;
   border-radius: 8px;
   padding: 2rem;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--about-shadow);
 }
 
 .about-content p {
-  color: #34495e;
   font-size: 1.1rem;
   line-height: 1.6;
   margin-bottom: 2rem;
 }
 
 .about-content h3 {
-  color: #2c3e50;
+  color: var(--about-title) !important;
   margin: 1.5rem 0 1rem;
 }
 
@@ -36,9 +36,8 @@
 }
 
 .about-content li {
-  color: #34495e;
   padding: 0.5rem 0;
-  border-bottom: 1px solid #ecf0f1;
+  border-bottom: 1px solid var(--about-border);
 }
 
 .about-content li:last-child {

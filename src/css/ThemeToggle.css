@@ -22,3 +22,33 @@
   border: 1px solid #ffd700;
   box-shadow: 0 0 8px #ffd70055;
 }
+
+.theme-light {
+  --bg-primary: #fff;
+  --text-primary: #222;
+  --card-bg: #fff;
+  --navbar-bg: #fff;
+  /* ...otros colores */
+}
+
+.theme-dark {
+  --bg-primary: #181818;
+  --text-primary: #fff;
+  --card-bg: #232323;
+  --navbar-bg: #181818;
+  /* ...otros colores */
+}
+
+body {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background 0.3s, color 0.3s;
+}
+
+.navbar {
+  background: var(--navbar-bg) !important;
+}
+
+.card {
+  background: var(--card-bg) !important;
+}

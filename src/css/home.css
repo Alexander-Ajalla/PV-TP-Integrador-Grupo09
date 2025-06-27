@@ -1,12 +1,13 @@
 .select-category-container {
-  background: rgba(34, 40, 49, 0.85);
+  background: var(--card-bg);
   border-radius: 1.2rem;
   box-shadow: 0 1px 8px 0 rgba(0,173,181,0.10);
   padding: 0.8rem 1.5rem 0.8rem 1.5rem;
   display: inline-block;
   margin-bottom: 1.2rem;
-  border: 1.5px solid #00adb5;
+  border: 1.5px solid var(--accent);
   transition: box-shadow 0.3s, border-color 0.3s;
+  color: var(--text-primary);
 }
 
 .select-category-container:hover {
@@ -16,15 +17,15 @@
 
 .select-category-container .fw-bold {
   font-size: 1rem;
-  color: #00adb5;
+  color: var(--accent);
   letter-spacing: 0.5px;
 }
 
 .form-select {
   border-radius: 1.2rem;
   border: 1.5px solid #222831;
-  background: #232526;
-  color: #f8f8f8;
+  background: var(--bg-primary);
+  color: var(--text-primary);
   box-shadow: none;
   padding: 0.4rem 2rem 0.4rem 1rem;
   font-size: 1rem;
@@ -41,13 +42,13 @@
 }
 
 .form-select:focus {
-  border-color: #00adb5;
-  background: #18191a;
-  color: #f8f8f8;
+  border-color: var(--accent);
+  background: var(--card-bg);
+  color: var(--text-primary);
 }
 
 .form-select:hover {
-  border-color: #00adb5;
-  background: #18191a;
-  color: #f8f8f8;
+  border-color: var(--accent);
+  background: var(--card-bg);
+  color: var(--text-primary);
 }
