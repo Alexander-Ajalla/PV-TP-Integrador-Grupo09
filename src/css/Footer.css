@@ -1,0 +1,57 @@
+/* Footer sincronizado con el navbar y adaptado a modo claro/oscuro */
+
+.custom-footer {
+  background-color: var(--footer-bg, #000000);
+  color: var(--footer-text, #ffffff);
+  border-top: 3px solid var(--footer-border, #00ff9d);
+  box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.6);
+  padding: 1rem 0;
+  text-align: center;
+  font-family: 'Orbitron', sans-serif;
+}
+
+.footer-dark {
+  --footer-bg: #000000;
+  --footer-text: #ffffff;
+  --footer-border: #00ff9d;
+}
+
+.footer-light {
+  --footer-bg: #ffffff;
+  --footer-text: #222222;
+  --footer-border: #00e0ff;
+}
+
+.custom-footer span strong {
+  background: linear-gradient(to right, #00e0ff, #00ff9d);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.custom-footer a {
+  color: var(--footer-text, #ffffff);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.custom-footer a:hover {
+  color: #00ff9d;
+}
+
+.footer-light .custom-footer a:hover {
+  color: #00e0ff;
+}
+
+.social-icons a {
+  color: var(--footer-text, #ffffff);
+  font-size: 1.6rem;
+  margin: 0 0.6rem;
+  transition: color 0.3s, transform 0.3s;
+}
+
+.social-icons a:hover {
+  color: #00e0ff;
+  transform: scale(1.2);
+}
+

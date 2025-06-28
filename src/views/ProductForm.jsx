@@ -18,6 +18,7 @@ function ProductForm() {
   // `useSelector` nos permite extraer datos del estado de Redux.
   // Aquí obtenemos la lista completa de productos para poder buscar el producto a editar.
   const products = useSelector((state) => state.products.products);
+  const { mode } = useSelector((state) => state.theme);
 
   // 3. Estado Local del Formulario
   // `formData` almacena los valores de los campos del formulario.
@@ -147,129 +148,97 @@ function ProductForm() {
     navigate("/");
   };
 
+  // Calcular categorías únicas fuera del JSX
+  const categories = Array.from(new Set(products.map((p) => p.category)));
+
   return (
-    <div className="container mt-5">
-      <div className="row justify-content-center">
-        <div className="col-md-8 col-lg-6">
-          <div className="card shadow">
-            <div className="card-body">
-              <h1 className="card-title text-center mb-4">
-                {isEditing ? "Editar Producto" : "Crear Nuevo Producto"}
-              </h1>
-              <form onSubmit={handleSubmit} noValidate>
-                <div className="mb-3">
-                  <label htmlFor="title" className="form-label">
-                    Título:
-                  </label>
-                  <input
-                    type="text"
-                    id="title"
-                    name="title"
-                    value={formData.title}
-                    onChange={handleChange}
-                    className={`form-control ${
-                      errors.title ? "is-invalid" : ""
-                    }`}
-                  />
-                  {errors.title && (
-                    <div className="invalid-feedback">{errors.title}</div>
-                  )}
-                </div>
-
-                <div className="mb-3">
-                  <label htmlFor="price" className="form-label">
-                    Precio:
-                  </label>
-                  <input
-                    type="number"
-                    id="price"
-                    name="price"
-                    value={formData.price}
-                    onChange={handleChange}
-                    step="0.01"
-                    className={`form-control ${
-                      errors.price ? "is-invalid" : ""
-                    }`}
-                  />
-                  {errors.price && (
-                    <div className="invalid-feedback">{errors.price}</div>
-                  )}
-                </div>
-
-                <div className="mb-3">
-                  <label htmlFor="description" className="form-label">
-                    Descripción:
-                  </label>
-                  <textarea
-                    id="description"
-                    name="description"
-                    value={formData.description}
-                    onChange={handleChange}
-                    rows="4"
-                    className={`form-control ${
-                      errors.description ? "is-invalid" : ""
-                    }`}
-                  ></textarea>
-                  {errors.description && (
-                    <div className="invalid-feedback">{errors.description}</div>
-                  )}
-                </div>
-
-                <div className="mb-3">
-                  <label htmlFor="image" className="form-label">
-                    URL de la Imagen:
-                  </label>
-                  <input
-                    type="text" 
-                    id="image"
-                    name="image"
-                    value={formData.image}
-                    onChange={handleChange}
-                    className={`form-control ${
-                      errors.image ? "is-invalid" : ""
-                    }`}
-                  />
-                  {errors.image && (
-                    <div className="invalid-feedback">{errors.image}</div>
-                  )}
-                </div>
-
-                <div className="mb-4">
-                  <label htmlFor="category" className="form-label">
-                    Categoría:
-                  </label>
-                  <input
-                    type="text"
-                    id="category"
-                    name="category"
-                    value={formData.category}
-                    onChange={handleChange}
-                    className={`form-control ${
-                      errors.category ? "is-invalid" : ""
-                    }`}
-                  />
-                  {errors.category && (
-                    <div className="invalid-feedback">{errors.category}</div>
-                  )}
-                </div>
-
-                <div className="d-grid gap-2 d-md-flex justify-content-md-end">
-                  <button
-                    type="button"
-                    onClick={() => navigate(-1)}
-                    className="btn btn-secondary me-md-2"
-                  >
-                    Cancelar
-                  </button>
-                  <button type="submit" className="btn btn-primary">
-                    {isEditing ? "Guardar Cambios" : "Crear Producto"}
-                  </button>
-                </div>
-              </form>
-            </div>
-          </div>
+    <div className={`product-form-outer product-form-${mode}`}>
+      <form className="product-form-container" onSubmit={handleSubmit} noValidate>
+        <h1 className="product-form-title">
+          {isEditing ? "Editar Producto" : "Crear Nuevo Producto"}
+        </h1>
+        <div className="product-form-group">
+          <label htmlFor="title" className="product-form-label">Título:</label>
+          <input
+            type="text"
+            id="title"
+            name="title"
+            value={formData.title}
+            onChange={handleChange}
+            className={`product-form-input${errors.title ? " is-invalid" : ""}`}
+          />
+          {errors.title && <div className="invalid-feedback">{errors.title}</div>}
         </div>
-      </div>
+        <div className="product-form-group">
+          <label htmlFor="price" className="product-form-label">Precio:</label>
+          <input
+            type="number"
+            id="price"
+            name="price"
+            value={formData.price}
+            onChange={handleChange}
+            step="0.01"
+            className={`product-form-input${errors.price ? " is-invalid" : ""}`}
+          />
+          {errors.price && <div className="invalid-feedback">{errors.price}</div>}
+        </div>
+        <div className="product-form-group">
+          <label htmlFor="description" className="product-form-label">Descripción:</label>
+          <textarea
+            id="description"
+            name="description"
+            value={formData.description}
+            onChange={handleChange}
+            rows="4"
+            className={`product-form-input product-form-textarea${errors.description ? " is-invalid" : ""}`}
+          ></textarea>
+          {errors.description && <div className="invalid-feedback">{errors.description}</div>}
+        </div>
+        <div className="product-form-group">
+          <label htmlFor="image" className="product-form-label">URL de la Imagen:</label>
+          <input
+            type="text"
+            id="image"
+            name="image"
+            value={formData.image}
+            onChange={handleChange}
+            className={`product-form-input${errors.image ? " is-invalid" : ""}`}
+          />
+          {errors.image && <div className="invalid-feedback">{errors.image}</div>}
+        </div>
+        <div className="product-form-group">
+          <label htmlFor="category" className="product-form-label">Categoría:</label>
+          <select
+            id="category"
+            name="category"
+            value={formData.category}
+            onChange={handleChange}
+            className={`product-form-input${errors.category ? " is-invalid" : ""}`}
+            required
+          >
+            <option value="">Selecciona una categoría</option>
+            {categories.map((cat) => (
+              <option key={cat} value={cat}>{cat}</option>
+            ))}
+          </select>
+          {errors.category && <div className="invalid-feedback">{errors.category}</div>}
+        </div>
+        <div className="product-form-actions">
+          <button
+            type="button"
+            onClick={() => navigate(-1)}
+            className="product-form-btn product-form-btn-cancel"
+          >
+            Cancelar
+          </button>
+          <button
+            type="submit"
+            className="product-form-btn product-form-btn-submit"
+          >
+            {isEditing ? "Guardar Cambios" : "Crear Producto"}
+          </button>
+        </div>
+      </form>
     </div>
   );
 }

@@ -1,0 +1,84 @@
+.register-bg {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--bg-primary);
+  border: 4px solid var(--accent);
+  border-radius: 2.5rem;
+}
+
+.register-card {
+  background: var(--card-bg);
+  color: var(--text-primary);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.2);
+  border-radius: 2.5rem;
+  padding: 2.5rem 2rem 2rem 2rem;
+  max-width: 400px;
+  width: 100%;
+  animation: fadeIn 0.7s;
+  border: 2px solid var(--accent);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.register-title {
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+  color: var(--accent);
+  text-align: center;
+}
+
+.register-form label {
+  font-weight: 500;
+  margin-bottom: 0.3rem;
+  color: var(--text-primary);
+  display: block;
+}
+
+.register-form input {
+  width: 100%;
+  padding: 0.6rem;
+  margin-bottom: 1rem;
+  border: 1px solid #bdbdbd;
+  border-radius: 0.5rem;
+  outline: none;
+  transition: border 0.2s;
+  font-size: 1rem;
+  background: var(--card-bg);
+  color: var(--text-primary);
+}
+
+.register-form input:focus {
+  border: 1.5px solid var(--accent);
+}
+
+.btn-register {
+  width: 100%;
+  background: linear-gradient(90deg, var(--accent) 0%, var(--accent2) 100%);
+  border: none;
+  color: var(
+    --text-primary
+  ); /*se comunica directamente con la variable de index.css*/
+  font-weight: bold;
+  padding: 0.7rem 0;
+  border-radius: 0.5rem;
+  transition: background 0.3s;
+  margin-top: 0.5rem;
+  box-shadow: 0 2px 8px rgba(0, 173, 181, 0.08);
+  font-size: 1rem;
+}
+
+.btn-register:hover {
+  background: linear-gradient(90deg, var(--accent2) 0%, var(--accent) 100%);
+  color: var(--text-primary);
+}

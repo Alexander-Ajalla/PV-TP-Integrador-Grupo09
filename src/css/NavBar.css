@@ -16,7 +16,8 @@
 }
 
 .custom-navbar {
-  background: #000000; /* Fondo sólido negro */
+  background: var(--navbar-bg) !important;
+  color: var(--text-primary) !important;
   border-bottom: 3px solid #00ff9d;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
 }
@@ -51,4 +52,17 @@
 /* Subrayado permanente en el activo */
 .custom-navlink.active::after {
   width: 100%;
+}
+
+.navbar .nav-link,
+.navbar .navbar-brand,
+.navbar .navbar-text {
+  color: var(--text-primary) !important;
+  transition: color 0.3s;
+}
+
+.navbar .nav-link.active,
+.navbar .nav-link:focus,
+.navbar .nav-link:hover {
+  color: var(--text-primary) !important;
 }
