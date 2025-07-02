@@ -7,7 +7,7 @@
   margin-bottom: 1.2rem;
   border: 1.5px solid var(--accent);
   transition: box-shadow 0.3s, border-color 0.3s;
-  color: var(--text-primary);
+  color: var(--text-primary) !important;
 }
 
 .select-category-container:hover {
@@ -17,7 +17,7 @@
 
 .select-category-container .fw-bold {
   font-size: 1rem;
-  color: var(--accent);
+  color: var(--accent) !important;
   letter-spacing: 0.5px;
 }
 
@@ -25,7 +25,7 @@
   border-radius: 1.2rem;
   border: 1.5px solid #222831;
   background: var(--bg-primary);
-  color: var(--text-primary);
+  color: var(--text-primary) !important;
   box-shadow: none;
   padding: 0.4rem 2rem 0.4rem 1rem;
   font-size: 1rem;
@@ -44,11 +44,29 @@
 .form-select:focus {
   border-color: var(--accent);
   background: var(--card-bg);
-  color: var(--text-primary);
+  color: var(--text-primary) !important;
 }
 
 .form-select:hover {
   border-color: var(--accent);
   background: var(--card-bg);
-  color: var(--text-primary);
+  color: var(--text-primary) !important;
+}
+
+/* SOLO MODO OSCURO: select fondo negro y letras blancas */
+.theme-dark .form-select,
+.theme-dark .form-select:focus,
+.theme-dark .form-select:hover {
+  background: #181818 !important;
+  color: #fff !important;
+  border-color: var(--accent);
+}
+
+/* Asegura que el título y subtítulo de bienvenida usen el color correcto según el tema */
+.d-flex.flex-column.align-items-center.text-center.p-4.mb-5 h2.fw-bold {
+  color: var(--text-primary) !important;
+}
+.d-flex.flex-column.align-items-center.text-center.p-4.mb-5 p.text-muted {
+  color: var(--text-primary) !important;
+  opacity: 0.8;
 }

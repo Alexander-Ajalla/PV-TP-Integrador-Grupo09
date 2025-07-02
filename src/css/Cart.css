@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap');
+
+.cart-title {
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 700;
+  font-size: 2.2rem;
+  color: var(--text-primary) !important;
+  margin-bottom: 1.5rem;
+  transition: color 0.3s;
+}
+
+.cart-product-title {
+  color: var(--text-primary) !important;
+  font-weight: 600;
+}
+
+.cart-product-unit,
+.cart-total-label,
+.cart-total-units {
+  color: var(--text-primary) !important;
+  opacity: 0.8;
+}
+
+.cart-total-amount {
+  color: #28a745 !important;
+  font-weight: 700;
+}
+
+/* Nueva regla para el span de 'Total:' */
+.cart-total-label-inline {
+  color: var(--text-primary) !important;
+  font-weight: 600;
+  opacity: 1;
+}
+
+/* Cantidad y botones de cantidad */
+.cart-qty-btn {
+  color: var(--text-primary) !important;
+  border-color: var(--text-primary) !important;
+  background: transparent;
+  font-size: 1.3rem;
+  font-weight: 600;
+  transition: color 0.2s, border-color 0.2s;
+}
+.cart-qty-btn:disabled {
+  opacity: 0.5;
+}
+.cart-qty-value {
+  color: var(--text-primary) !important;
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin: 0 0.5rem;
+} 

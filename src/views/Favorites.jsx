@@ -1,5 +1,6 @@
 import { useSelector } from "react-redux";
 import ProductCard from "../components/ProductCard";
+import "../css/Favorites.css";
 
 const Favorites = () => {
   const favorites = useSelector((state) => state.products.favorites);
@@ -11,7 +12,7 @@ const Favorites = () => {
   return (
     <>
       <div className="container mt-4">
-        <h1 className="mb-4"> Mis Favoritos</h1>
+        <h1 className="favorites-title">Mis Favoritos</h1>
 
         {favoriteProducts.length === 0 ? (
           <div className="alert alert-info text-center">
