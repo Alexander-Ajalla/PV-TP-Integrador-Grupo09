@@ -18,7 +18,7 @@ import Register from "./views/Register"; //esto tambien
 import { useNavigate } from "react-router-dom";
 import { logout } from "../src/store/authSlice.js"; //la ruta tiene que ser asi
 import About from "./views/About.jsx"; // Importa el componente About
-
+import "./index.css";
 // Este componente "wrapper" se encargará de la carga inicial de datos y las rutas
 function AppWrapper() {
   const dispatch = useDispatch();
