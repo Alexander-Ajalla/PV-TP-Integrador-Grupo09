@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { removeFromCart, clearCart } from "../store/cartSlice";
 import toast from "react-hot-toast";
+import "../css/Cart.css";
 
 const Cart = () => {
   const dispatch = useDispatch();
@@ -22,7 +23,7 @@ const Cart = () => {
 
   return (
     <div className="container py-4">
-      <h2 className="mb-4">🛒 Carrito de Compras</h2>
+      <h2 className="cart-title mb-4">🛒 Carrito de Compras</h2>
       {cartItems.length === 0 ? (
         <div className="alert alert-info text-center">
           <p>No hay productos en el carrito.</p>
@@ -41,22 +42,22 @@ const Cart = () => {
                   style={{ width: "80px", height: "auto" }}
                 />
                 <div className="flex-grow-1 mx-3">
-                  <h5 className="mb-1">{item.title}</h5>
-                  <div className="text-muted">
+                  <h5 className="cart-product-title mb-1">{item.title}</h5>
+                  <div className="cart-product-unit">
                     Precio unitario: ${item.price.toLocaleString()}
                   </div>
                 </div>
                 <div className="d-flex align-items-center gap-2 me-4">
                   <button
-                    className="btn btn-outline-secondary"
+                    className="btn btn-outline-secondary cart-qty-btn"
                     onClick={() => handleDecrease(item.id)}
                     disabled={item.quantity === 1}
                   >
                     -
                   </button>
-                  <span>{item.quantity}</span>
+                  <span className="cart-qty-value">{item.quantity}</span>
                   <button
-                    className="btn btn-outline-secondary"
+                    className="btn btn-outline-secondary cart-qty-btn"
                     onClick={() => handleIncrease(item.id)}
                   >
                     +
@@ -71,7 +72,7 @@ const Cart = () => {
                     gap: "0.5rem",
                   }}
                 >
-                  <strong>
+                  <strong className="cart-total-amount">
                     ${(item.price * item.quantity).toLocaleString()}
                   </strong>
                   <button
@@ -90,12 +91,12 @@ const Cart = () => {
           </div>
           <div className="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center">
             <div className="mb-2">
-              <h5 className="mb-1">Total productos: {cartItems.length}</h5>
-              <h6 className="text-muted">Unidades totales: {totalUnits}</h6>
+              <h5 className="cart-total-label mb-1">Total productos: {cartItems.length}</h5>
+              <h6 className="cart-total-units text-muted">Unidades totales: {totalUnits}</h6>
             </div>
             <div className="text-end">
               <h4>
-                Total: <span className="text-success">${total.toFixed(2)}</span>
+                <span className="cart-total-label-inline">Total:</span> <span className="cart-total-amount">${total.toFixed(2)}</span>
               </h4>
               <button
                 className="btn btn-danger w-100"
