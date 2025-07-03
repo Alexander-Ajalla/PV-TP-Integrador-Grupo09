@@ -1,5 +1,10 @@
 import { useDispatch, useSelector } from "react-redux";
-import { removeFromCart, clearCart } from "../store/cartSlice";
+import {
+  removeFromCart,
+  clearCart,
+  increaseQuantity,
+  decreaseQuantity,
+} from "../store/cartSlice";
 import toast from "react-hot-toast";
 import "../css/Cart.css";
 
@@ -25,11 +30,11 @@ const Cart = () => {
   const totalUnits = cartItems.reduce((acc, item) => acc + item.quantity, 0);
 
   const handleDecrease = (id) => {
-    dispatch({ type: "cart/decreaseQuantity", payload: id });
+    dispatch(decreaseQuantity(id));
   };
 
   const handleIncrease = (id) => {
-    dispatch({ type: "cart/increaseQuantity", payload: id });
+    dispatch(increaseQuantity(id));
   };
 
   return (
