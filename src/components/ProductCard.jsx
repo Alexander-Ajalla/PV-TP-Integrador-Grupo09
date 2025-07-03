@@ -79,7 +79,7 @@ const ProductCard = ({
                 className="btn btn-success w-100"
                 onClick={handleAddToCart}
               >
-                <i class="bi bi-cart-plus-fill"></i>
+                <i className="bi bi-cart-plus-fill"></i>
                 Añadir al Carrito
               </button>
             </label>
@@ -87,7 +87,7 @@ const ProductCard = ({
 
           {showRemove && (
             <button className="btn btn-danger btn-sm w-100" onClick={onRemove}>
-              <i class="bi bi-x-circle-fill"></i> Quitar del Carrito
+              <i className="bi bi-x-circle-fill"></i> Quitar del Carrito
             </button>
           )}
         </div>
