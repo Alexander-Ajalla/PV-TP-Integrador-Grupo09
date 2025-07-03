@@ -3,21 +3,25 @@ import React, { useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import { Provider, useDispatch, useSelector } from "react-redux";
 import { store } from "./store/store";
+import { fetchProducts } from "./store/productSlice";
+
+// * Componentes
 import NavBar from "./components/NavBar.jsx";
-import Home from "./views/Home.jsx";
 import Footer from "./components/Footer.jsx";
+import PrivateRoute from "./components/PrivateRoute";
+// * Vistas - paginas
+import Login from "./views/Login"; // para que ya este listo para el que lo cree
+import Register from "./views/Register"; //esto tambien
+import Home from "./views/Home.jsx";
 import Favorites from "./views/Favorites.jsx";
 import ProductDetails from "./views/ProductDetails.jsx";
 import ProductForm from "./views/ProductForm.jsx";
-import { fetchProducts } from "./store/productSlice";
 import Cart from "./views/Cart.jsx";
-import { Toaster } from "react-hot-toast";
-import PrivateRoute from "./components/PrivateRoute";
-import Login from "./views/Login"; // para que ya este listo para el que lo cree
-import Register from "./views/Register"; //esto tambien
-import { useNavigate } from "react-router-dom";
-import { logout } from "../src/store/authSlice.js"; //la ruta tiene que ser asi
 import About from "./views/About.jsx"; // Importa el componente About
+
+import { Toaster } from "react-hot-toast";
+// import { useNavigate } from "react-router-dom";
+// import { logout } from "../src/store/authSlice.js"; //la ruta tiene que ser asi
 import "./index.css";
 // Este componente "wrapper" se encargará de la carga inicial de datos y las rutas
 function AppWrapper() {
@@ -114,7 +118,7 @@ function AppWrapper() {
           <Route path="/acerca" element={<About />} />
         </Routes>
       </main>
-       <Footer />
+      <Footer />
     </div>
   );
 }
