@@ -11,6 +11,7 @@ import "../css/Cart.css";
 const Cart = () => {
   // useDispatch() Lo usás para enviar acciones que modifican el estado global.
   const dispatch = useDispatch(); // Te da acceso al dispatch de Redux.
+
   // useSelector() Te permite leer datos del estado global.
   // Recibe una función que accede al state.
   const cartItems = useSelector((state) => state.cart.items); // Obtiene los ítems del carrito desde el store
