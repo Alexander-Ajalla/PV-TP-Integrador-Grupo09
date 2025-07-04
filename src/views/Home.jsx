@@ -14,8 +14,8 @@ const Home = () => {
 
   // *  Estado para la categoría seleccionada (Estados locales)
   const [selectedCategory, setSelectedCategory] = useState(""); // ? selectedCategory: Guarda la categoría elegida por el usuario.
-  const [sortType, setSortType] = useState(""); // ? sortType: Define el tipo de ordenamiento (por precio, nombre, fecha…).
 
+  const [sortType, setSortType] = useState(""); // ? sortType: Define el tipo de ordenamiento (por precio, nombre, fecha…).
   // * OBTENER categorías únicas
   // ? Recorre los productos y usa "set" para obtener valores unicos
   const categories = Array.from(new Set(products.map((p) => p.category)));

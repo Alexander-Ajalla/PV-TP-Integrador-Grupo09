@@ -1,4 +1,3 @@
-// src/App.jsx
 import React, { useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import { Provider, useDispatch, useSelector } from "react-redux";
@@ -10,35 +9,38 @@ import NavBar from "./components/NavBar.jsx";
 import Footer from "./components/Footer.jsx";
 import PrivateRoute from "./components/PrivateRoute";
 // * Vistas - paginas
-import Login from "./views/Login"; // para que ya este listo para el que lo cree
-import Register from "./views/Register"; //esto tambien
+import Login from "./views/Login";
+import Register from "./views/Register";
 import Home from "./views/Home.jsx";
 import Favorites from "./views/Favorites.jsx";
 import ProductDetails from "./views/ProductDetails.jsx";
 import ProductForm from "./views/ProductForm.jsx";
 import Cart from "./views/Cart.jsx";
-import About from "./views/About.jsx"; // Importa el componente About
-
+import About from "./views/About.jsx";
 import { Toaster } from "react-hot-toast";
 // import { useNavigate } from "react-router-dom";
 // import { logout } from "../src/store/authSlice.js"; //la ruta tiene que ser asi
 import "./index.css";
+
 // Este componente "wrapper" se encargará de la carga inicial de datos y las rutas
 function AppWrapper() {
-  const dispatch = useDispatch();
-  const { mode } = useSelector((state) => state.theme);
+  const dispatch = useDispatch(); // * hook de redux , se usa para llamar a fetchProducts
+  const { mode } = useSelector((state) => state.theme); // * hook que extrae el estado del tema desde redux (light/dark)
 
   // Despacha fetchProducts cuando el componente se monta por primera vez
   useEffect(() => {
-    dispatch(fetchProducts());
+    dispatch(fetchProducts()); // * lama a un thunk para cargar productos y los guarda en productSlice
     // Rehidratación del usuario desde localStorage
     const sessionUser = JSON.parse(localStorage.getItem("sessionUser"));
+    // * Si hay un usuario en localStorage, lo vuelve a loguear automaticamente
+    // * aunque se recargué la página la sesión no se pierde
     if (sessionUser) {
       dispatch({ type: "auth/login", payload: sessionUser });
     }
     // Inicializar usuarios por defecto si no existen
     const storedUsers = JSON.parse(localStorage.getItem("users"));
     if (!storedUsers || storedUsers.length === 0) {
+      // * Si no hay usuarios en localStorage crea el usuario admin
       const defaultUsers = [
         {
           name: "admin",
