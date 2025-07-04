@@ -1,27 +1,35 @@
-import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import React, { useState } from "react"; // ? useState: maneja estado locales (categoria seleccionada, tipo de ordenamiento)
+import { useSelector } from "react-redux"; // ? useSelector: accede al estado global de redux
 import ProductCard from "../components/ProductCard";
 import "../css/home.css";
 const Home = () => {
+  // * Obtencion de datos del store
   const { products, loading, error } = useSelector((state) => state.products);
   const user = useSelector((state) => state.auth.user); // usuario autenticado
-  // Estado para la categoría seleccionada
-  const [selectedCategory, setSelectedCategory] = useState("");
+  // ? Se obtienen products:
+  // ? Lista de productos.
+  // ? loading: Si están cargando.
+  // ? error: Si hubo un error al obtenerlos.
+  // ? user: Usuario autenticado (para mostrar el saludo).
 
-  const [sortType, setSortType] = useState("");
+  // *  Estado para la categoría seleccionada (Estados locales)
+  const [selectedCategory, setSelectedCategory] = useState(""); // ? selectedCategory: Guarda la categoría elegida por el usuario.
+  const [sortType, setSortType] = useState(""); // ? sortType: Define el tipo de ordenamiento (por precio, nombre, fecha…).
 
-  // Obtener categorías únicas
+  // * OBTENER categorías únicas
+  // ? Recorre los productos y usa "set" para obtener valores unicos
   const categories = Array.from(new Set(products.map((p) => p.category)));
 
-  // Filtrar productos según la categoría seleccionada
+  // * FILTRAR productos según la categoría seleccionada
   const filteredProducts = selectedCategory
-    ? products.filter((p) => p.category === selectedCategory)
+    ? products.filter((p) => p.category === selectedCategory) // * operador ternario
     : products;
-    
-  // ORDENAR productos según el tipo seleccionado
-  let sortedProducts = [...filteredProducts];
+  // ? Si se selecciono una categoria, filtra, y sino muestra todos los productos
+  // * ORDENAR productos según el tipo seleccionado
+  let sortedProducts = [...filteredProducts]; // ? se crea una copia de los productos filtrados
 
   if (sortType === "price-asc") {
+    // ? se aplican los tipos de ordenamiento con sortType
     sortedProducts.sort((a, b) => a.price - b.price);
   } else if (sortType === "price-desc") {
     sortedProducts.sort((a, b) => b.price - a.price);
@@ -35,6 +43,8 @@ const Home = () => {
     sortedProducts.sort((a, b) => a.id - b.id);
   }
 
+  // * Estados especiales
+  // ? Si se estan cargando los productos muestra un spinner
   if (loading) {
     return (
       <div className="text-center mt-5">
@@ -46,6 +56,7 @@ const Home = () => {
     );
   }
 
+  // ! Si da un error muestra una alerta
   if (error) {
     return (
       <div className="alert alert-danger text-center mt-5" role="alert">
@@ -53,7 +64,7 @@ const Home = () => {
       </div>
     );
   }
-
+  // ? Si no hay un producto muestra un mensaje
   if (!products || products.length === 0) {
     return (
       <div className="text-center mt-5">
@@ -86,60 +97,72 @@ const Home = () => {
 
         {/* Selector de categoría */}
         <div className="d-flex justify-content-center gap-3 flex-wrap mb-4">
-  <div className="select-category-container d-flex flex-column align-items-center">
-    <div className="d-flex align-items-center mb-2">
-      <i className="bi bi-funnel-fill me-2" style={{ color: "#00adb5", fontSize: "1.5rem" }}></i>
-      <span className="fw-bold" style={{ color: "#00adb5", fontSize: "1.2rem" }}>
-        Filtrar por categoría
-      </span>
-    </div>
-    <select
-      className="form-select w-auto"
-      value={selectedCategory}
-      onChange={(e) => setSelectedCategory(e.target.value)}
-    >
-      <option value="">Todas las categorías</option>
-      {categories.map((cat) => (
-        <option key={cat} value={cat}>
-          {cat}
-        </option>
-      ))}
-    </select>
-  </div>
-  
-        {/* Selector de ordenamiento */}
-             <div className="select-category-container d-flex flex-column align-items-center">
-    <div className="d-flex align-items-center mb-2">
-      <i className="bi bi-sort-alpha-down me-2" style={{ color: "#00adb5", fontSize: "1.5rem" }}></i>
-      <span className="fw-bold" style={{ color: "#00adb5", fontSize: "1.2rem" }}>
-        Ordenar por
-      </span>
-    </div>
-    <select
-      className="form-select w-auto"
-      value={sortType}
-      onChange={(e) => setSortType(e.target.value)}
-    >
-      <option value="">Sin orden</option>
-      <option value="price-asc">Precio: Menor a mayor</option>
-      <option value="price-desc">Precio: Mayor a menor</option>
-      <option value="az">Nombre: A-Z</option>
-      <option value="za">Nombre: Z-A</option>
-      <option value="newest">Más nuevo</option>
-      <option value="oldest">Más viejo</option>
-    </select>
-  </div>
-</div>
+          <div className="select-category-container d-flex flex-column align-items-center">
+            <div className="d-flex align-items-center mb-2">
+              <i
+                className="bi bi-funnel-fill me-2"
+                style={{ color: "#00adb5", fontSize: "1.5rem" }}
+              ></i>
+              <span
+                className="fw-bold"
+                style={{ color: "#00adb5", fontSize: "1.2rem" }}
+              >
+                Filtrar por categoría
+              </span>
+            </div>
+            <select
+              className="form-select w-auto"
+              value={selectedCategory}
+              onChange={(e) => setSelectedCategory(e.target.value)}
+            >
+              <option value="">Todas las categorías</option>
+              {categories.map((cat) => (
+                <option key={cat} value={cat}>
+                  {cat}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          {/* Selector de ordenamiento */}
+          <div className="select-category-container d-flex flex-column align-items-center">
+            <div className="d-flex align-items-center mb-2">
+              <i
+                className="bi bi-sort-alpha-down me-2"
+                style={{ color: "#00adb5", fontSize: "1.5rem" }}
+              ></i>
+              <span
+                className="fw-bold"
+                style={{ color: "#00adb5", fontSize: "1.2rem" }}
+              >
+                Ordenar por
+              </span>
+            </div>
+            <select
+              className="form-select w-auto"
+              value={sortType}
+              onChange={(e) => setSortType(e.target.value)}
+            >
+              <option value="">Sin orden</option>
+              <option value="price-asc">Precio: Menor a mayor</option>
+              <option value="price-desc">Precio: Mayor a menor</option>
+              <option value="az">Nombre: A-Z</option>
+              <option value="za">Nombre: Z-A</option>
+              <option value="newest">Más nuevo</option>
+              <option value="oldest">Más viejo</option>
+            </select>
+          </div>
+        </div>
 
         {/* Grilla de productos */}
         <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
           {sortedProducts.map((product) => (
-          <div key={product.id} className="col">
-            <div className="card h-100 shadow-sm border-0 hover-shadow">
-              <ProductCard product={product} />
-         </div>
-      </div>
-))}
+            <div key={product.id} className="col">
+              <div className="card h-100 shadow-sm border-0 hover-shadow">
+                <ProductCard product={product} />
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </>

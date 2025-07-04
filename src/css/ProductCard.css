@@ -8,8 +8,8 @@
   flex-direction: column;
   height: 100%;
   width: 100%;
-  background: var(--card-bg);
-  color: var(--text-primary);
+  background: #fff !important;
+  color: #222 !important;
 }
 
 .product-card:hover {
@@ -50,7 +50,7 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  color: var(--text-primary);
+  color: #222 !important;
 }
 
 .product-card-price {
@@ -61,7 +61,7 @@
 }
 
 .product-card-category {
-  color: var(--about-text);
+  color: #222 !important;
   text-transform: capitalize;
   font-size: 0.875rem;
 }

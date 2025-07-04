@@ -1,0 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap');
+
+.favorites-title {
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 700;
+  font-size: 2.6rem;
+  letter-spacing: 1px;
+  color: var(--text-primary) !important;
+  transition: color 0.3s;
+  margin-bottom: 1.5rem;
+} 
