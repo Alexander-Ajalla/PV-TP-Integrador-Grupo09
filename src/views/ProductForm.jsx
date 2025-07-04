@@ -42,7 +42,7 @@ function ProductForm() {
     if (isEditing) {
       // Si estamos editando, buscamos el producto en nuestra lista de productos del store de Redux.
       // Usamos `==` para comparar `id` (que es string) con `product.id` (que puede ser number) de forma flexible.
-     const productToEdit = products.find(p => p.id == id); 
+      const productToEdit = products.find((p) => p.id == id);
       if (productToEdit) {
         // Si el producto se encuentra, precargamos el estado del formulario con sus datos.
         setFormData({
@@ -92,23 +92,23 @@ function ProductForm() {
     if (!formData.description.trim()) {
       newErrors.description = "La descripción es obligatoria.";
     }
-    // Fragmento de validateForm en ProductForm.jsx
+    
     if (!formData.image.trim()) {
       newErrors.image = "La URL de la imagen es obligatoria.";
     } else if (
-      !/^https?:\/\/.+\.(jpg|jpeg|png|gif|webp)$/i.test(formData.image)
+      !/^https?:\/\/.+\.(jpg|jpeg|png|gif|webp)(\?.*)?$/i.test(formData.image)
     ) {
-      // Esta regex es una validación básica para URLs que terminan en extensiones de imagen comunes.
       newErrors.image =
-        "La URL de la imagen no es válida (solo .jpg, .jpeg, .png, .gif, .webp).";
+        "La URL de la imagen no es válida (debe terminar en .jpg, .jpeg, .png, .gif, .webp).";
     }
+
     if (!formData.category.trim()) {
       newErrors.category = "La categoría es obligatoria.";
     }
 
     setErrors(newErrors); // Actualizamos el estado de errores.
-   
-     console.log("Errores de validación:", newErrors); // Agrega este log
+
+    console.log("Errores de validación:", newErrors); // Agrega este log
 
     return Object.keys(newErrors).length === 0;
   };
@@ -121,7 +121,7 @@ function ProductForm() {
 
     if (!validateForm()) {
       // Si la validación falla, detenemos el envío del formulario.
-       console.log("Validación falló, no se despachará la acción.");
+      console.log("Validación falló, no se despachará la acción.");
       return;
     }
 
@@ -137,7 +137,7 @@ function ProductForm() {
     if (isEditing) {
       // Si estamos editando, enviamos la acción `updateProduct` con el ID y los datos actualizados.
       dispatch(updateProduct({ id: parseInt(id), updatedData: productData }));
-      console.log("Despachando updateProduct."); 
+      console.log("Despachando updateProduct.");
     } else {
       // `addProduct` en tu slice ya genera el ID, solo necesita los datos del nuevo producto.
       dispatch(addProduct(productData));
@@ -153,12 +153,18 @@ function ProductForm() {
 
   return (
     <div className={`product-form-outer product-form-${mode}`}>
-      <form className="product-form-container" onSubmit={handleSubmit} noValidate>
+      <form
+        className="product-form-container"
+        onSubmit={handleSubmit}
+        noValidate
+      >
         <h1 className="product-form-title">
           {isEditing ? "Editar Producto" : "Crear Nuevo Producto"}
         </h1>
         <div className="product-form-group">
-          <label htmlFor="title" className="product-form-label">Título:</label>
+          <label htmlFor="title" className="product-form-label">
+            Título:
+          </label>
           <input
             type="text"
             id="title"
@@ -167,10 +173,14 @@ function ProductForm() {
             onChange={handleChange}
             className={`product-form-input${errors.title ? " is-invalid" : ""}`}
           />
-          {errors.title && <div className="invalid-feedback">{errors.title}</div>}
+          {errors.title && (
+            <div className="invalid-feedback">{errors.title}</div>
+          )}
         </div>
         <div className="product-form-group">
-          <label htmlFor="price" className="product-form-label">Precio:</label>
+          <label htmlFor="price" className="product-form-label">
+            Precio:
+          </label>
           <input
             type="number"
             id="price"
@@ -180,22 +190,32 @@ function ProductForm() {
             step="0.01"
             className={`product-form-input${errors.price ? " is-invalid" : ""}`}
           />
-          {errors.price && <div className="invalid-feedback">{errors.price}</div>}
+          {errors.price && (
+            <div className="invalid-feedback">{errors.price}</div>
+          )}
         </div>
         <div className="product-form-group">
-          <label htmlFor="description" className="product-form-label">Descripción:</label>
+          <label htmlFor="description" className="product-form-label">
+            Descripción:
+          </label>
           <textarea
             id="description"
             name="description"
             value={formData.description}
             onChange={handleChange}
             rows="4"
-            className={`product-form-input product-form-textarea${errors.description ? " is-invalid" : ""}`}
+            className={`product-form-input product-form-textarea${
+              errors.description ? " is-invalid" : ""
+            }`}
           ></textarea>
-          {errors.description && <div className="invalid-feedback">{errors.description}</div>}
+          {errors.description && (
+            <div className="invalid-feedback">{errors.description}</div>
+          )}
         </div>
         <div className="product-form-group">
-          <label htmlFor="image" className="product-form-label">URL de la Imagen:</label>
+          <label htmlFor="image" className="product-form-label">
+            URL de la Imagen:
+          </label>
           <input
             type="text"
             id="image"
@@ -204,24 +224,34 @@ function ProductForm() {
             onChange={handleChange}
             className={`product-form-input${errors.image ? " is-invalid" : ""}`}
           />
-          {errors.image && <div className="invalid-feedback">{errors.image}</div>}
+          {errors.image && (
+            <div className="invalid-feedback">{errors.image}</div>
+          )}
         </div>
         <div className="product-form-group">
-          <label htmlFor="category" className="product-form-label">Categoría:</label>
+          <label htmlFor="category" className="product-form-label">
+            Categoría:
+          </label>
           <select
             id="category"
             name="category"
             value={formData.category}
             onChange={handleChange}
-            className={`product-form-input${errors.category ? " is-invalid" : ""}`}
+            className={`product-form-input${
+              errors.category ? " is-invalid" : ""
+            }`}
             required
           >
             <option value="">Selecciona una categoría</option>
             {categories.map((cat) => (
-              <option key={cat} value={cat}>{cat}</option>
+              <option key={cat} value={cat}>
+                {cat}
+              </option>
             ))}
           </select>
-          {errors.category && <div className="invalid-feedback">{errors.category}</div>}
+          {errors.category && (
+            <div className="invalid-feedback">{errors.category}</div>
+          )}
         </div>
         <div className="product-form-actions">
           <button

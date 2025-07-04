@@ -10,11 +10,14 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import './css/ThemeToggle.css'
 
 createRoot(document.getElementById("root")).render(
-  <StrictMode>
-    <Provider store={store}>
-      <BrowserRouter>
+  <StrictMode> 
+    <Provider store={store}> 
+      <BrowserRouter> 
         <App />
       </BrowserRouter>
     </Provider>
   </StrictMode>
 );
+// * <StrictMode> control para posibles errores
+// * <Provider store={store}>  Proporciona el store de redux, para usar useDispatch y useSelector
+// * <BrowserRouter>  Proporciona el contexto de navegacion (routes,route, link, navLink, useNavigate)
